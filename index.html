@@ -110,6 +110,64 @@ kbd{font:500 12px/1 var(--mono);border:1px solid var(--line);border-bottom-width
 #toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%) translateY(20px);opacity:0;background:var(--ink);color:var(--panel);padding:10px 16px;border-radius:10px;font-weight:500;max-width:min(560px,92vw);transition:opacity .2s,transform .2s;pointer-events:none;z-index:10}
 #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+.chip{display:flex;align-items:baseline;gap:8px;border:1px solid transparent;background:none;border-radius:8px;padding:5px 9px;min-width:0;max-width:320px;text-align:left}
+.chip:hover{border-color:var(--line);background:var(--panel-2)}
+#projName{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+#projState{font-size:13px;color:var(--muted);white-space:nowrap}
+.story{position:absolute;left:12px;bottom:12px;width:min(400px,calc(100% - 24px));background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px;z-index:4;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+.story[hidden]{display:none}
+.story.ok{animation:okflash .8s}
+@keyframes okflash{0%{box-shadow:0 0 0 3px var(--ok)}100%{box-shadow:0 10px 30px rgba(0,0,0,.2)}}
+.story-top{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);font-weight:600}
+.story-top .x{margin-left:auto;border:0;background:none;font-size:22px;line-height:1;color:var(--muted);padding:0 4px}
+.story-bar{height:4px;border-radius:2px;background:var(--panel-2);margin:8px 0 10px;overflow:hidden}
+.story-bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+.story h4{font:700 21px/1.15 var(--cond);margin:0 0 4px}
+#storyText p{margin:5px 0}
+.story-warn{margin-top:8px;padding:8px 10px;border-radius:8px;background:rgba(180,35,24,.1);color:var(--danger);font-size:14px}
+.story-wait{font-size:13px;color:var(--muted);margin-top:8px}
+.story-actions{display:flex;gap:8px;margin-top:12px;align-items:center}
+.story-actions .grow{flex:1}
+.hint-pulse{animation:hintp 1.3s ease-in-out infinite}
+@keyframes hintp{0%,100%{box-shadow:0 0 0 2px var(--accent-line),0 0 0 2px var(--accent-soft)}50%{box-shadow:0 0 0 2px var(--accent-line),0 0 0 8px var(--accent-soft)}}
+#ptip{position:fixed;z-index:20;width:270px;background:var(--ink);color:var(--panel);border-radius:10px;padding:10px 12px 11px;font-size:14px;line-height:1.4;pointer-events:none;display:none;box-shadow:0 8px 24px rgba(0,0,0,.28)}
+#ptip b{font:700 18px/1.1 var(--cond)}
+#ptip p{margin:5px 0 0}
+#ptip .ex{opacity:.9}
+#ptip .ex span{display:block;font-weight:600;color:var(--accent);font-size:13px}
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--panel);color:var(--ink);padding:0;width:min(780px,94vw);max-height:88vh}
+dialog.small{width:min(440px,94vw)}
+dialog::backdrop{background:rgba(8,12,16,.5)}
+.dlg-head{display:flex;align-items:center;gap:12px;padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+.dlg-head h2{font:700 26px/1 var(--cond);margin:0}
+.dlg-head p{margin:0;color:var(--muted);font-size:14px}
+.dlg-head .x{margin-left:auto;border:0;background:none;font-size:26px;line-height:1;color:var(--muted)}
+.dlg-body{padding:14px 18px 18px;overflow:auto;max-height:calc(88vh - 76px)}
+.dlg-body h3{font:600 15px/1.2 var(--sans);color:var(--muted);margin:18px 0 8px}
+.dlg-body h3:first-child{margin-top:4px}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(225px,1fr));gap:10px}
+.lcard{text-align:left;border:1px solid var(--line);background:var(--panel-2);border-radius:10px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;line-height:1.35}
+.lcard:hover{border-color:var(--accent-line)}
+.lcard .n{font:700 28px/1 var(--cond);color:var(--accent-line)}
+.lcard b{font:700 19px/1.1 var(--cond)}
+.lcard .meta{font-size:13px;color:var(--muted)}
+.lcard .done{font-size:13px;font-weight:600;color:var(--ok)}
+.exlist{display:flex;flex-wrap:wrap;gap:8px}
+.savebar{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.savebar input{flex:1;min-width:180px;border:1px solid var(--line);background:var(--panel-2);border-radius:7px;padding:7px 10px}
+.curline{margin:0 0 10px;color:var(--muted);font-size:14px}
+.prow{display:grid;grid-template-columns:128px minmax(0,1fr);gap:4px 14px;align-items:center;padding:12px 0;border-bottom:1px solid var(--line)}
+.prow img,.prow .noimg{width:128px;height:80px;object-fit:cover;border-radius:7px;border:1px solid var(--line);background:var(--bench);grid-row:span 2}
+.prow.cur img{outline:2px solid var(--accent-line)}
+.pmeta b{display:block;font:700 19px/1.15 var(--cond);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pmeta span{font-size:13px;color:var(--muted)}
+.pact{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.pact input{border:1px solid var(--line);background:var(--panel-2);border-radius:7px;padding:5px 8px;min-width:0;flex:1}
+.pact .q{font-size:14px;font-weight:600;color:var(--danger)}
+.btn.danger{color:var(--danger)}
+.empty{color:var(--muted);padding:14px 0}
+.pfoot{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}
+@media (prefers-reduced-motion:reduce){.hint-pulse{animation:none;box-shadow:0 0 0 2px var(--accent-line)}.story.ok{animation:none}.story-bar i{transition:none}}
 @media (max-width:900px){
   #app{grid-template-columns:minmax(0,1fr);grid-template-rows:auto auto minmax(0,1fr) minmax(0,40%)}
   .brand small{display:none}
@@ -120,6 +178,8 @@ kbd{font:500 12px/1 var(--mono);border:1px solid var(--line);border-bottom-width
   .pitem{width:84px;touch-action:pan-x}
   .side{border-left:0;border-top:1px solid var(--line)}
   #status{display:none}
+  .chip{display:none}
+  #ptip{display:none!important}
   .wirebar label{display:none}
 }
 @media (prefers-reduced-motion:reduce){#toast{transition:none}}
@@ -132,8 +192,10 @@ kbd{font:500 12px/1 var(--mono);border:1px solid var(--line);border-bottom-width
       <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><rect x="3" y="3" width="20" height="20" rx="3" fill="var(--ink)"/><g fill="var(--panel)"><circle cx="8.5" cy="8.5" r="1.6"/><circle cx="13" cy="8.5" r="1.6"/><circle cx="17.5" cy="8.5" r="1.6"/><circle cx="8.5" cy="17.5" r="1.6"/><circle cx="13" cy="17.5" r="1.6"/></g><circle cx="17.5" cy="17.5" r="2.4" fill="var(--accent)"/></svg>
       Benchtop <small>electronics lab</small>
     </div>
+    <button class="chip" id="projChip" title="Projects"><span id="projName">Untitled bench</span><span id="projState"></span></button>
     <div class="tb">
-      <select class="btn" id="examples" aria-label="Load an example circuit"></select>
+      <button class="btn" id="learnBtn">Story mode</button>
+      <button class="btn" id="projBtn">Projects</button>
       <div class="seg" id="viewSeg" role="group" aria-label="View">
         <button data-v="bb" class="on">Breadboard</button><button data-v="pcb">PCB</button>
       </div>
@@ -154,6 +216,15 @@ kbd{font:500 12px/1 var(--mono);border:1px solid var(--line);border-bottom-width
       <button class="btn" id="zoomIn" aria-label="Zoom in">+</button>
     </div>
     <div id="tip"></div>
+    <div class="story" id="story" hidden>
+      <div class="story-top"><span id="storyKicker"></span><span id="storyStep"></span><button class="x" id="storyExit" aria-label="Exit lesson" title="Exit lesson">×</button></div>
+      <div class="story-bar"><i id="storyBar"></i></div>
+      <h4 id="storyTitle"></h4>
+      <div id="storyText"></div>
+      <div id="storyWarn" class="story-warn" hidden></div>
+      <div id="storyWait" class="story-wait" hidden>Do this on the bench and the lesson moves on by itself.</div>
+      <div class="story-actions"><button class="btn" id="storyBack">Back</button><span class="grow"></span><button class="btn" id="storyShow">Show me</button><button class="btn run" id="storyNext">Next</button></div>
+    </div>
     <div id="status">Drag parts onto the bench · drag from any pin or hole to run a wire · <b>R</b> rotates · <b>Del</b> removes · scroll to zoom · drag empty space to pan</div>
   </main>
 
@@ -183,6 +254,29 @@ kbd{font:500 12px/1 var(--mono);border:1px solid var(--line);border-bottom-width
   </aside>
 </div>
 <div id="toast" role="status"></div>
+<div id="ptip" role="tooltip"></div>
+<dialog id="learnDlg" aria-labelledby="learnTitle">
+  <div class="dlg-head"><div><h2 id="learnTitle">Story mode</h2><p>Short guided builds. Each step checks your wiring and moves on when it works.</p></div><button class="x" data-close aria-label="Close">×</button></div>
+  <div class="dlg-body"><h3>Lessons</h3><div class="lgrid" id="lgrid"></div><h3>Finished example circuits</h3><div class="exlist" id="exlist"></div></div>
+</dialog>
+<dialog id="projDlg" aria-labelledby="projTitle">
+  <div class="dlg-head"><div><h2 id="projTitle">Projects</h2><p>Saved in this browser. Open one any time to pick up where you left off.</p></div><button class="x" data-close aria-label="Close">×</button></div>
+  <div class="dlg-body">
+    <p class="curline" id="curLine"></p>
+    <div class="savebar"><input id="saveName" placeholder="Project name" aria-label="Project name" maxlength="60"><button class="btn run" id="saveBtn">Save as new project</button></div>
+    <h3>Your projects</h3>
+    <div id="plist"></div>
+    <div class="pfoot"><button class="btn" id="newBenchBtn">New blank bench</button><button class="btn" id="importBtn">Import a project file</button><button class="btn" id="exportBtn">Download this bench</button><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+  </div>
+</dialog>
+<dialog id="guardDlg" class="small" aria-labelledby="guardTitle">
+  <div class="dlg-body">
+    <h2 id="guardTitle" style="font:700 24px/1.1 var(--cond);margin:6px 0 6px">Save this bench first?</h2>
+    <p id="guardText" style="margin:0;color:var(--muted)"></p>
+    <label class="field"><span>Project name</span><input id="guardName" maxlength="60" style="border:1px solid var(--line);background:var(--panel-2);border-radius:7px;padding:7px 10px"></label>
+    <div class="row"><button class="btn run" id="guardSave">Save and continue</button><button class="btn" id="guardDiscard">Don’t save</button><button class="btn" id="guardCancel">Cancel</button></div>
+  </div>
+</dialog>
 
 <script>
 /*CORE-START*/
@@ -398,6 +492,16 @@ T.seg7 = {
   post(c, n, V, s) { const vf = LEDC[c.props.color].vf; for (let i = 0; i < 7; i++) if (s.on && s.on[i]) s.acc[i] += (V[n[i]] - V[n[7]] - vf) / RON; },
   fin(c, s, P) { s.bs = s.acc.map(a => Math.max(0, Math.min(1, a / P / 0.012))); }
 };
+const ldrR = l => Math.pow(10, 5.301 - l * 2.602);   // ~200 kΩ dark → ~500 Ω bright
+T.ldr = {
+  name: () => 'Light sensor (photoresistor)', defaults: () => ({ light: 0.6 }), pins: [['leg 1', 0, 0], ['leg 2', 2, 0]], bbox: () => [-0.15, -1.8, 2.15, 0.15],
+  stamp(c, n, br) { br(n[0], n[1], 1 / ldrR(c.props.light), 0); }
+};
+T.tmp36 = {
+  name: () => 'Temperature sensor (TMP36)', defaults: () => ({ temp: 22 }), pins: [['+Vs', 0, 0], ['Vout', 1, 0], ['GND', 2, 0]], bbox: () => [-0.3, -2.45, 2.3, 0.15],
+  stamp(c, n, br, s) { br(n[0], n[2], 1 / 50000, 0); if (s.pw) br(n[1], n[2], 1 / 50, 0.5 + 0.01 * c.props.temp); else br(n[1], n[2], 1e-9, 0); },
+  check(c, n, V, s) { const pw = (V[n[0]] - V[n[2]]) > 2.7; if (pw !== !!s.pw) { s.pw = pw; return true; } return false; }
+};
 const ARD_PINS = (() => {
   const l = [];
   for (let i = 0; i < 14; i++) l.push(['D' + i, 17 - i, 0]);
@@ -609,7 +713,46 @@ const EXAMPLES = {
       wires: [...ch.wires, wr(7, 20, 24, 18, BLK), wr(6, 20, 10, 25, RED), wr(11, 20, 11, 25, YEL), wr(8, 20, 12, 25, BLK)] };
   } }
 };
+const CODE_EMPTY = `// Your sketch goes here
+void setup() {
+}
+
+void loop() {
+}
+`;
 const CODE = {
+  night: `// Night light: the LED on pin 13 turns on when it gets dark
+const int SENSOR = A0;
+const int LED = 13;
+const int DARK = 300;   // raise this to switch on sooner
+
+void setup() {
+  pinMode(LED, OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  int light = analogRead(SENSOR);   // brighter = bigger number
+  Serial.print("light ");
+  Serial.println(light);
+  digitalWrite(LED, light < DARK ? HIGH : LOW);
+  delay(200);
+}
+`,
+  thermo: `// Thermometer: TMP36 output on A0
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  int raw = analogRead(A0);              // 0 to 1023
+  float volts = raw * 5.0 / 1023.0;      // convert to volts
+  float tempC = (volts - 0.5) * 100.0;   // 0.5 V at 0 °C, 10 mV per degree
+  Serial.print(tempC, 1);
+  Serial.println(" °C");
+  delay(500);
+}
+`,
   blink: `// Blink: an external LED on pin 13
 const int LED = 13;
 
@@ -824,6 +967,20 @@ T.dff.draw = (g, c, s) => {
   txt(g, 'D', 1.2, 0, 0.5, TH.ink, 'left'); txt(g, 'Q', 2.8, 0, 0.5, TH.ink, 'right'); txt(g, 'Q̄', 2.8, 2, 0.5, TH.ink, 'right');
   g.beginPath(); g.moveTo(1, 1.75); g.lineTo(1.35, 2); g.lineTo(1, 2.25); g.stroke();
 };
+T.ldr.draw = (g, c) => {
+  const l = c.props.light;
+  line(g, 0, 0, 0.55, -0.45, 0.07, LEAD); line(g, 2, 0, 1.45, -0.45, 0.07, LEAD);
+  if (l > 0.05) { circ(g, 1, -1.0, 1.0); g.fillStyle = `rgba(255,214,10,${0.3 * l})`; g.fill(); }
+  circ(g, 1, -1.0, 0.66); g.fillStyle = mix('#4f4234', '#f4e4c1', 0.3 + 0.7 * l); g.fill(); g.strokeStyle = '#a9824b'; g.lineWidth = 0.05; g.stroke();
+  g.strokeStyle = '#b4472a'; g.lineWidth = 0.08; g.lineJoin = 'round'; g.beginPath(); let y = -1.38; g.moveTo(0.62, y);
+  for (let i = 0; i < 5; i++) { const xa = i % 2 === 0 ? 1.38 : 0.62; g.lineTo(xa, y); if (i < 4) { y += 0.19; g.lineTo(xa, y); } } g.stroke();
+};
+T.tmp36.draw = (g, c) => {
+  [0, 1, 2].forEach(x => line(g, x, 0, x, -0.55, 0.07, LEAD));
+  g.beginPath(); g.moveTo(-0.2, -0.5); g.lineTo(2.2, -0.5); g.lineTo(2.2, -1.1); g.quadraticCurveTo(2.2, -1.8, 1, -1.8); g.quadraticCurveTo(-0.2, -1.8, -0.2, -1.1); g.closePath(); g.fillStyle = '#1c1d20'; g.fill();
+  txt(g, 'TMP36', 1, -1.08, 0.46, '#c9ccd1', 'center', 600);
+  txt(g, c.props.temp + ' °C', 1, -2.15, 0.48, viewMode === 'pcb' ? '#e9f2e7' : TH.ink);
+};
 function seg7Segments(g, c, s) {
   const col = LEDC[c.props.color].col, L = 2.55, R = 4.45, T0 = -5.0, B = -1.4, M = (T0 + B) / 2;
   const segs = [[L + .18, T0, R - .18, T0], [R, T0 + .18, R, M - .18], [R, M + .18, R, B - .18], [L + .18, B, R - .18, B], [L, M + .18, L, B - .18], [L, T0 + .18, L, M - .18], [L + .18, M, R - .18, M]];
@@ -864,6 +1021,16 @@ T.arduino.draw = (g, c, s) => {
   if (rt) txt(g, '● running', 18.6, 5.3, 0.42, '#7ef0a0', 'left', 600);
 };
 
+function pcbLabel(c) {
+  switch (c.type) {
+    case 'resistor': return 'R ' + fmtOhm(c.props.r);
+    case 'battery': return 'BAT ' + c.props.v + 'V';
+    case 'vcc': return '+' + c.props.v + 'V';
+    case 'gate': return c.props.kind.toUpperCase();
+    case 'arduino': return 'UNO-COMPATIBLE · ATmega328P';
+    default: return ({ led: 'LED', button: 'SW', switch: 'SW', pot: 'POT', gnd: 'GND', toggle: 'IN', clock: 'CLK', dff: 'D-FF', ldr: 'LDR', tmp36: 'TMP36' })[c.type] || '';
+  }
+}
 function drawPCB(g, c, s) {
   const d = T[c.type];
   if (c.type === 'breadboard') {
@@ -876,7 +1043,7 @@ function drawPCB(g, c, s) {
   const [x0, y0, x1, y1] = d.bbox(c);
   rr(g, x0, y0, x1 - x0, y1 - y0, 0.15); g.strokeStyle = 'rgba(236,244,232,.85)'; g.lineWidth = 0.07; g.stroke();
   if (c.type === 'led') { circ(g, 0.5, -1.2, 0.55); g.stroke(); }
-  const label = { resistor: 'R ' + fmtOhm(c.props.r), led: 'LED', battery: 'BAT ' + c.props.v + 'V', button: 'SW', switch: 'SW', pot: 'POT', vcc: '+' + c.props.v + 'V', gnd: 'GND', probe: 'TP', toggle: 'IN', clock: 'CLK', gate: c.props.kind.toUpperCase(), dff: 'D-FF', seg7: '7SEG', arduino: 'UNO-COMPATIBLE · ATmega328P' }[c.type] || '';
+  const label = pcbLabel(c);
   const cx = (x0 + x1) / 2, cy = (y0 + y1) / 2;
   if (c.type !== 'probe' && c.type !== 'seg7') txt(g, label, cx, c.type === 'arduino' ? 10 : cy, c.type === 'arduino' ? 0.9 : 0.42, 'rgba(236,244,232,.85)');
   for (const [, px, py] of localPins(c)) { circ(g, px, py, 0.3); g.fillStyle = '#d6a548'; g.fill(); circ(g, px, py, 0.11); g.fillStyle = '#0b2e1a'; g.fill(); }
@@ -995,6 +1162,21 @@ function render() {
     for (const [x, y] of netKeys(hp.x, hp.y)) { circ(ctx, x, y, 0.3); ctx.stroke(); }
     ctx.lineWidth = 0.12; circ(ctx, hp.x, hp.y, 0.36); ctx.stroke();
   }
+  if (lesson && !lesson.done) {
+    const acc = pcb ? '#ffd84d' : (TH.accentline || '#f0b400'), pulse = 0.32 + 0.14 * Math.sin(NOW * 4);
+    for (const gc of lesson.ghosts || []) {
+      drawComp(ctx, gc, pulse);
+      const b = T[gc.type].bbox(gc); ctx.save(); ctx.translate(gc.x, gc.y); ctx.rotate((gc.rot || 0) * Math.PI / 2);
+      ctx.setLineDash([0.3, 0.2]); ctx.strokeStyle = acc; ctx.lineWidth = 0.08; rr(ctx, b[0] - 0.25, b[1] - 0.25, b[2] - b[0] + 0.5, b[3] - b[1] + 0.5, 0.25); ctx.stroke(); ctx.restore();
+    }
+    let guides = []; try { const st = lesson.L.steps[lesson.i]; guides = st.guide ? st.guide(lesson.mem) || [] : []; } catch (e) {}
+    ctx.save(); ctx.setLineDash([0.4, 0.25]); ctx.lineDashOffset = -(NOW * 1.6) % 0.65;
+    for (const [x1, y1, x2, y2] of guides) {
+      line(ctx, x1, y1, x2, y2, 0.16, acc);
+      ctx.setLineDash([]); for (const [x, y] of [[x1, y1], [x2, y2]]) { circ(ctx, x, y, 0.34); ctx.strokeStyle = acc; ctx.lineWidth = 0.1; ctx.stroke(); } ctx.setLineDash([0.4, 0.25]);
+    }
+    ctx.restore();
+  }
   if (placing && ghost) drawComp(ctx, ghost, 0.55);
   if (draft) {
     ctx.setLineDash([0.3, 0.2]); line(ctx, draft.x1, draft.y1, draft.x2, draft.y2, 0.14, draft.color); ctx.setLineDash([]);
@@ -1003,15 +1185,86 @@ function render() {
 }
 
 /* ---------- state ops ---------- */
-let saveTimer = null;
-function save() { try { localStorage.setItem('benchtop:v1', JSON.stringify({ comps: state.comps, wires: state.wires })); } catch (e) {} }
-function changed() { netDirty = true; clearTimeout(saveTimer); saveTimer = setTimeout(save, 400); }
+const WORK_KEY = 'benchtop:v1', PROJ_KEY = 'benchtop:projects', LESSON_KEY = 'benchtop:lessons';
+let saveTimer = null, currentProject = null, projName = '';
+function readProjects() { try { return JSON.parse(localStorage.getItem(PROJ_KEY)) || {}; } catch (e) { return {}; } }
+function writeProjects(P) { try { localStorage.setItem(PROJ_KEY, JSON.stringify(P)); return true; } catch (e) { toast('Couldn’t save: this browser’s storage is full or blocked.'); return false; } }
+function save() {
+  clearTimeout(saveTimer); saveTimer = null;
+  try { localStorage.setItem(WORK_KEY, JSON.stringify({ comps: state.comps, wires: state.wires, projectId: currentProject })); } catch (e) {}
+  if (currentProject) {
+    const P = readProjects(), p = P[currentProject];
+    if (p) { p.data = JSON.parse(JSON.stringify({ comps: state.comps, wires: state.wires })); p.updated = Date.now(); p.thumb = makeThumb(); writeProjects(P); }
+    else currentProject = null;
+  }
+  updateChip();
+}
+function changed() { netDirty = true; clearTimeout(saveTimer); saveTimer = setTimeout(save, 700); updateChip(); }
+function flushSave() { if (saveTimer) save(); }
+function benchEmpty() { return !state.comps.length && !state.wires.length; }
+function updateChip() {
+  const nm = $('#projName'), st = $('#projState');
+  if (currentProject) { nm.textContent = projName; st.textContent = saveTimer ? 'Saving…' : 'Saved'; }
+  else if (lesson) { nm.textContent = 'Lesson: ' + lesson.L.title; st.textContent = 'Not saved'; }
+  else { nm.textContent = 'Untitled bench'; st.textContent = benchEmpty() ? '' : 'Not saved'; }
+}
+function benchBounds(comps, wires) {
+  let x0 = Infinity, y0 = Infinity, x1 = -Infinity, y1 = -Infinity;
+  const add = (x, y) => { x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y); };
+  for (const c of comps) { const b = T[c.type].bbox(c); for (const [lx, ly] of [[b[0], b[1]], [b[2], b[3]], [b[0], b[3]], [b[2], b[1]]]) { const [rx, ry] = rotPt(lx, ly, c.rot || 0); add(c.x + rx, c.y + ry); } }
+  for (const w of wires) { add(w.x1, w.y1); add(w.x2, w.y2); }
+  return isFinite(x0) ? [x0, y0, x1, y1] : null;
+}
+function makeThumb() {
+  try {
+    const W = 256, H = 160, cv = document.createElement('canvas'); cv.width = W; cv.height = H;
+    const g = cv.getContext('2d'); g.fillStyle = TH.bench || '#c9d5dc'; g.fillRect(0, 0, W, H);
+    const b = benchBounds(state.comps, state.wires); if (!b) return cv.toDataURL('image/jpeg', 0.7);
+    const z = Math.min(W / (b[2] - b[0] + 3), H / (b[3] - b[1] + 3));
+    g.setTransform(z, 0, 0, z, W / 2 - (b[0] + b[2]) / 2 * z, H / 2 - (b[1] + b[3]) / 2 * z);
+    const vm = viewMode; viewMode = 'bb';
+    try { for (const c of state.comps) if (c.type === 'breadboard') drawComp(g, c); for (const c of state.comps) if (c.type !== 'breadboard') drawComp(g, c); for (const w of state.wires) drawWire(g, w, false); }
+    finally { viewMode = vm; }
+    return cv.toDataURL('image/jpeg', 0.72);
+  } catch (e) { return ''; }
+}
+function suggestName() { if (lesson) return lesson.L.title; const n = Object.keys(readProjects()).length + 1; return 'My circuit ' + n; }
+function saveAsProject(name) {
+  name = (name || '').trim() || suggestName();
+  const P = readProjects(), id = newId();
+  P[id] = { name, created: Date.now(), updated: Date.now(), data: JSON.parse(JSON.stringify({ comps: state.comps, wires: state.wires })), thumb: makeThumb() };
+  if (!writeProjects(P)) return null;
+  currentProject = id; projName = name; save();
+  toast(`Saved “${name}”. Changes now save automatically.`);
+  return id;
+}
+function switchBench(data, projectId, name) {
+  stopAll(); exitLesson(); currentProject = projectId; projName = name || '';
+  loadDesign(data); undoStack.length = 0; save(); fitView();
+}
+function openProject(id) {
+  const p = readProjects()[id]; if (!p) return;
+  switchBench(JSON.parse(JSON.stringify(p.data)), id, p.name);
+  $('#projDlg').open && $('#projDlg').close(); toast(`Opened “${p.name}”.`);
+}
+let guardThen = null;
+function guardBench(then, verb) {
+  flushSave();
+  if (currentProject || benchEmpty() || lesson) { then(); return; }
+  guardThen = then;
+  $('#guardText').textContent = `${verb} replaces what’s on the bench, and it isn’t saved as a project yet.`;
+  $('#guardName').value = suggestName(); $('#guardDlg').showModal(); $('#guardName').select();
+}
 function pushUndo() { undoStack.push(JSON.stringify(state)); if (undoStack.length > 80) undoStack.shift(); }
 function undo() {
   if (!undoStack.length) { toast('Nothing to undo'); return; }
   state = JSON.parse(undoStack.pop()); sel = null; draft = null; changed(); renderInspector(); refreshBoards();
 }
-function loadDesign(d) { state = { comps: d.comps || [], wires: d.wires || [] }; simData.clear(); sel = null; changed(); renderInspector(); refreshBoards(); }
+function loadDesign(d) {
+  const comps = (d.comps || []).filter(c => T[c.type]).map(c => Object.assign({}, c, { id: c.id || newId(), rot: c.rot || 0, props: Object.assign(T[c.type].defaults(), c.props || {}) }));
+  const wires = (d.wires || []).map(w => Object.assign({ color: BLU }, w, { id: w.id || newId() }));
+  state = { comps, wires }; simData.clear(); sel = null; draft = null; changed(); renderInspector(); refreshBoards();
+}
 function select(x) { sel = x; renderInspector(); if (x && x.kind === 'comp' && x.c.type === 'arduino') { codeBoard = x.c.id; refreshBoards(); } }
 function deleteSel() {
   if (!sel) return; pushUndo();
@@ -1031,8 +1284,45 @@ const PALETTE = [
   ['Boards', [['arduino', 'Arduino Uno'], ['breadboard', 'Breadboard']]],
   ['Power', [['battery', 'Battery'], ['vcc', 'Supply rail'], ['gnd', 'Ground']]],
   ['Parts', [['resistor', 'Resistor'], ['led', 'LED'], ['button', 'Push button'], ['switch', 'Slide switch'], ['pot', 'Potentiometer'], ['seg7', '7-segment']]],
+  ['Sensors', [['ldr', 'Light sensor'], ['tmp36', 'Temp sensor']]],
   ['Logic', [['toggle', 'Logic input'], ['clock', 'Clock'], ['gate:and', 'AND'], ['gate:or', 'OR'], ['gate:not', 'NOT'], ['gate:nand', 'NAND'], ['gate:nor', 'NOR'], ['gate:xor', 'XOR'], ['dff', 'D flip-flop'], ['probe', 'Logic probe']]]
 ];
+const INFO = {
+  arduino: ['A programmable board. Its pins switch 5 V on and off, read buttons and measure voltages.', 'Wire pin 13 → 220 Ω resistor → LED → GND, then run the Blink sketch.'],
+  breadboard: ['Push parts in without soldering. Each column of five holes is one connection; the long rails carry power.', 'A resistor from a7 to a11 joins column 7 to column 11.'],
+  battery: ['A voltage source with a red + lead and a black − lead. Choose 1.5 V to 12 V.', '9 V → 330 Ω resistor → LED → back to − lights the LED at about 20 mA.'],
+  vcc: ['A fixed voltage measured from ground. Pair it with a Ground symbol.', 'Connect +5 V to a gate input and that input reads 1.'],
+  gnd: ['The 0 V reference point. Every Ground symbol and Arduino GND pin is the same point.', 'An LED’s short leg (−) usually ends up here.'],
+  resistor: ['Limits how much current flows. The colour bands show its value.', '(5 V − 2 V for the LED) ÷ 220 Ω ≈ 14 mA: a safe, bright LED.'],
+  led: ['Lights when current flows from the long leg (+) to the short leg (−). Always give it a resistor.', 'Pin 13 → 220 Ω → LED + … LED − → GND.'],
+  button: ['Connects its two legs only while you hold it down.', 'Between pin 2 and GND with INPUT_PULLUP: digitalRead(2) is LOW while pressed.'],
+  switch: ['Stays on or off until you click it again.', 'Put it between the + rail and an LED circuit as an on/off switch.'],
+  pot: ['A knob whose middle pin sweeps between the voltages on its outer pins.', 'Outer pins to 5 V and GND, middle pin to A0: analogRead(A0) gives 0 to 1023.'],
+  seg7: ['Seven LED segments that draw digits. The common − pin goes to ground.', 'Light segments b and c, each through a resistor, to show “1”.'],
+  ldr: ['A photoresistor: its resistance drops as the light gets brighter. Scroll over it to change the light.', 'With a 10 kΩ resistor as a divider into A0, readings go up as it gets brighter.'],
+  tmp36: ['Outputs 0.5 V plus 10 mV for every °C. Pins: +Vs, Vout, GND. Scroll over it to change the temperature.', 'At 25 °C Vout is 0.75 V, so analogRead(A0) returns about 153.'],
+  toggle: ['A logic source. Click it to switch between 0 (0 V) and 1 (5 V).', 'Feed two of these into a gate to test its truth table.'],
+  clock: ['Flips between 0 and 1 at a steady rate.', 'Drive a flip-flop’s CLK input to make it count.'],
+  'gate:and': ['Output is 1 only when both inputs are 1.', 'A=1, B=1 → 1.  A=1, B=0 → 0.'],
+  'gate:or': ['Output is 1 when either input is 1.', 'A=0, B=1 → 1.  A=0, B=0 → 0.'],
+  'gate:not': ['Flips its input: 1 becomes 0 and 0 becomes 1.', 'A=1 → 0.  A=0 → 1.'],
+  'gate:nand': ['The opposite of AND: 0 only when both inputs are 1.', 'A=1, B=1 → 0. Every other combination → 1.'],
+  'gate:nor': ['The opposite of OR: 1 only when both inputs are 0.', 'A=0, B=0 → 1. Every other combination → 0.'],
+  'gate:xor': ['Output is 1 when the two inputs differ.', 'A=1, B=0 → 1.  A=1, B=1 → 0. It’s the sum bit in an adder.'],
+  dff: ['Remembers one bit. On each rising clock edge, Q copies D.', 'Wire Q̄ back to D and Q flips on every clock tick: a divide-by-two counter.'],
+  probe: ['Shows the voltage at its tip and whether that counts as 1 or 0.', 'Touch it to a gate’s output to read the result.']
+};
+function showPTip(it) {
+  const info = INFO[it.dataset.spec]; if (!info) return;
+  const tip = $('#ptip');
+  tip.innerHTML = `<b>${it.dataset.label}</b><p>${info[0]}</p><p class="ex"><span>Example</span>${info[1]}</p>`;
+  tip.style.display = 'block';
+  const r = it.getBoundingClientRect(), h = tip.offsetHeight, edge = $('#palette').getBoundingClientRect().right;
+  tip.style.left = Math.min(window.innerWidth - 280, edge + 10) + 'px';
+  tip.style.top = Math.max(8, Math.min(window.innerHeight - h - 8, r.top + r.height / 2 - h / 2)) + 'px';
+}
+function hidePTip() { $('#ptip').style.display = 'none'; }
+$('#palette').addEventListener('scroll', hidePTip, { passive: true });
 function specToComp(spec) { const [type, kind] = spec.split(':'); return mk(type, 0, 0, kind ? { kind } : {}); }
 function drawIcon(cv, spec) {
   const dpr = window.devicePixelRatio || 1, W = 76, H = 44; cv.width = W * dpr; cv.height = H * dpr;
@@ -1047,9 +1337,13 @@ function buildPalette() {
     const wrap = document.createElement('div'); wrap.className = 'pcat';
     wrap.innerHTML = `<h3>${cat}</h3>`; const grid = document.createElement('div'); grid.className = 'pgrid';
     for (const [spec, label] of items) {
-      const it = document.createElement('button'); it.className = 'pitem'; it.dataset.spec = spec; it.title = 'Drag onto the bench, or click then click the bench';
+      const it = document.createElement('button'); it.className = 'pitem'; it.dataset.spec = spec; it.dataset.label = label;
+      it.setAttribute('aria-label', label + '. ' + ((INFO[spec] || [''])[0]));
       it.innerHTML = `<canvas></canvas><span>${label}</span>`; grid.appendChild(it);
-      it.addEventListener('pointerdown', e => { if (e.button !== 0) return; startPlacing(spec, it); });
+      it.addEventListener('pointerdown', e => { hidePTip(); if (e.button !== 0) return; startPlacing(spec, it); });
+      it.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !placing) showPTip(it); });
+      it.addEventListener('pointerleave', hidePTip);
+      it.addEventListener('focus', () => showPTip(it)); it.addEventListener('blur', hidePTip);
       it.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); placeAtCenter(spec); } });
     }
     wrap.appendChild(grid); p.appendChild(wrap);
@@ -1181,8 +1475,12 @@ function finishWire(x, y) {
 }
 canvas.addEventListener('wheel', e => {
   e.preventDefault();
-  const [wx, wy] = toWorld(e.clientX, e.clientY), pot = compAt(wx, wy, false);
-  if (pot && pot.type === 'pot' && !e.ctrlKey) { pot.props.pos = Math.max(0, Math.min(1, pot.props.pos - e.deltaY * 0.0008)); changed(); if (sel && sel.c === pot) syncPotSlider(); return; }
+  const [wx, wy] = toWorld(e.clientX, e.clientY), k = compAt(wx, wy, false);
+  if (k && !e.ctrlKey && (k.type === 'pot' || k.type === 'ldr' || k.type === 'tmp36')) {
+    if (k.type === 'tmp36') k.props.temp = Math.max(-20, Math.min(60, Math.round(k.props.temp - Math.sign(e.deltaY))));
+    else { const key = k.type === 'pot' ? 'pos' : 'light'; k.props[key] = Math.max(0, Math.min(1, k.props[key] - e.deltaY * 0.0008)); }
+    changed(); if (sel && sel.c === k) syncRange(); return;
+  }
   zoomAt(e.clientX, e.clientY, Math.exp(-e.deltaY * (e.ctrlKey ? 0.01 : 0.0015)));
 }, { passive: false });
 function zoomAt(cx, cy, f) {
@@ -1230,6 +1528,8 @@ const FIELDS = {
   battery: [{ k: 'v', label: 'Voltage', type: 'select', opts: [1.5, 3, 3.7, 5, 9, 12].map(v => [v, v + ' V']) }],
   vcc: [{ k: 'v', label: 'Voltage', type: 'select', opts: [3.3, 5, 9, 12].map(v => [v, v + ' V']) }],
   pot: [{ k: 'r', label: 'Total resistance', type: 'select', opts: [1000, 10000, 100000].map(v => [v, fmtOhm(v)]) }, { k: 'pos', label: 'Knob position (or scroll over the knob)', type: 'range' }],
+  ldr: [{ k: 'light', label: 'Light level (or scroll over the sensor)', type: 'range' }],
+  tmp36: [{ k: 'temp', label: 'Temperature in °C (or scroll over the sensor)', type: 'range', min: -20, max: 60, step: 1 }],
   switch: [{ k: 'on', label: 'Switch is on', type: 'check' }],
   toggle: [{ k: 'on', label: 'Output high (1)', type: 'check' }],
   clock: [{ k: 'hz', label: 'Frequency', type: 'select', opts: [0.5, 1, 2, 4, 8].map(v => [v, v + ' Hz']) }],
@@ -1242,7 +1542,9 @@ const HELP = {
   probe: 'Shows the voltage at its tip, and 1 or 0 at the 2.5 V threshold.', toggle: 'Click it on the bench to switch between 0 V and 5 V.', clock: 'A square wave for driving logic.',
   gate: 'Ideal 5 V logic: inputs above 2.5 V read as 1, outputs drive 5 V or 0 V. No power pins needed.', dff: 'On each rising edge of CLK, Q copies D.',
   seg7: 'Common cathode: connect − to ground and drive each segment through its own resistor.', breadboard: 'Each column of five holes is connected; the long rails run the full length. Hover a hole to see what it connects to.',
-  arduino: 'Pins drive 5 V through about 25 Ω, like the real chip. INPUT_PULLUP adds a 20 kΩ pull-up.'
+  arduino: 'Pins drive 5 V through about 25 Ω, like the real chip. INPUT_PULLUP adds a 20 kΩ pull-up.',
+  ldr: 'Resistance falls from about 200 kΩ in the dark to about 500 Ω in bright light.',
+  tmp36: 'Needs 2.7–5.5 V between +Vs and GND. Pins from left: +Vs, Vout, GND.'
 };
 let liveEl = null;
 function renderInspector() {
@@ -1268,7 +1570,7 @@ function renderInspector() {
   let html = `<h2>${d.name(c)}</h2><p>${HELP[c.type] || ''}</p>`;
   for (const f of FIELDS[c.type] || []) {
     if (f.type === 'select') html += `<label class="field"><span>${f.label}</span><select data-k="${f.k}">${f.opts.map(([v, l]) => `<option value="${v}" ${String(c.props[f.k]) === String(v) ? 'selected' : ''}>${l}</option>`).join('')}</select></label>`;
-    if (f.type === 'range') html += `<label class="field"><span>${f.label}</span><input type="range" min="0" max="1" step="0.01" data-k="${f.k}" value="${c.props[f.k]}"></label>`;
+    if (f.type === 'range') html += `<label class="field"><span>${f.label}</span><input type="range" min="${f.min ?? 0}" max="${f.max ?? 1}" step="${f.step ?? 0.01}" data-k="${f.k}" value="${c.props[f.k]}"></label>`;
     if (f.type === 'check') html += `<label class="check"><input type="checkbox" data-k="${f.k}" ${c.props[f.k] ? 'checked' : ''}> ${f.label}</label>`;
   }
   html += `<div class="live" id="live"></div><div class="row">`;
@@ -1287,7 +1589,7 @@ function renderInspector() {
   if ($('#codeBtn')) $('#codeBtn').onclick = () => { codeBoard = c.id; refreshBoards(); showTab('code'); };
   liveEl = $('#live'); updateLive();
 }
-function syncPotSlider() { const r = document.querySelector('#pane-inspect input[type=range]'); if (r && sel && sel.c) r.value = sel.c.props.pos; }
+function syncRange() { document.querySelectorAll('#pane-inspect input[type=range]').forEach(r => { if (sel && sel.c) r.value = sel.c.props[r.dataset.k]; }); }
 const fmtV = v => v.toFixed(2) + ' V';
 const fmtI = i => { const a = Math.abs(i); return a < 1e-6 ? '0 mA' : a < 1e-3 ? (a * 1e6).toFixed(0) + ' µA' : a < 1 ? (a * 1e3).toFixed(1) + ' mA' : a.toFixed(2) + ' A'; };
 function updateLive() {
@@ -1299,6 +1601,8 @@ function updateLive() {
     case 'led': if (s.burned) { t = 'Burned out. Add a 220–330 Ω resistor in series, then replace the LED.'; warn = true; } else t = `<b>Current</b> ${fmtI(s.I || 0)}${(s.I || 0) > 0.03 ? ' — running hot' : ''}\n<b>State</b> ${(s.I || 0) > 2e-4 ? 'lit' : 'off'}\n<b>Safe range</b> 5–20 mA`; warn = !s.burned && (s.I || 0) > 0.03; break;
     case 'battery': t = `<b>Terminal voltage</b> ${fmtV(v(0) - v(1))}\n<b>Current out</b> ${fmtI(s.I || 0)}`; break;
     case 'pot': t = `<b>Wiper voltage</b> ${fmtV(v(1))}\n<b>Position</b> ${Math.round(c.props.pos * 100)}%`; break;
+    case 'ldr': t = `<b>Light</b> ${Math.round(c.props.light * 100)}%\n<b>Resistance</b> ${fmtOhm(ldrR(c.props.light))}`; break;
+    case 'tmp36': t = s.pw ? `<b>Temperature</b> ${c.props.temp} °C\n<b>Vout</b> ${fmtV(v(1) - v(2))}` : `<b>Temperature</b> ${c.props.temp} °C\nNo power yet: connect +Vs to 5 V and GND to ground.`; break;
     case 'probe': t = `<b>Voltage</b> ${fmtV(v(0))}\n<b>Logic level</b> ${v(0) > 2.5 ? '1 (high)' : '0 (low)'}`; break;
     case 'gate': t = c.props.kind === 'not' ? `<b>A</b> ${s.ia ? 1 : 0}  →  <b>Y</b> ${s.out ? 1 : 0}` : `<b>A</b> ${s.ia ? 1 : 0}  <b>B</b> ${s.ib ? 1 : 0}  →  <b>Y</b> ${s.out ? 1 : 0}`; break;
     case 'dff': t = `<b>Q</b> ${s.q ? 1 : 0}   <b>Q̄</b> ${s.q ? 0 : 1}`; break;
@@ -1387,23 +1691,372 @@ $('#clearBtn').onclick = () => { if (!state.comps.length && !state.wires.length)
 $('#fitBtn').onclick = fitView;
 $('#zoomIn').onclick = () => { const r = canvas.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 1.25); };
 $('#zoomOut').onclick = () => { const r = canvas.getBoundingClientRect(); zoomAt(r.left + r.width / 2, r.top + r.height / 2, 0.8); };
-const exSel = $('#examples');
-exSel.innerHTML = '<option value="">Load an example…</option>' + Object.entries(EXAMPLES).map(([k, e]) => `<option value="${k}">${e.name}</option>`).join('');
-exSel.onchange = () => {
-  const k = exSel.value; exSel.value = ''; if (!k) return;
-  stopAll(); pushUndo(); loadDesign(EXAMPLES[k].build()); fitView();
-  if (boards().length) toast('Press Run code to start the sketch.'); else toast('This circuit is live — try clicking the switches.');
+/* ---------- projects dialog ---------- */
+const esc = t => String(t).replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+function ago(ts) {
+  const m = Math.round((Date.now() - ts) / 60000);
+  if (m < 1) return 'Edited just now'; if (m < 60) return `Edited ${m} min ago`;
+  const h = Math.round(m / 60); if (h < 24) return `Edited ${h} h ago`;
+  return 'Edited ' + new Date(ts).toLocaleDateString(undefined, { month: 'short', day: 'numeric', year: 'numeric' });
+}
+function openProjects() {
+  flushSave(); renderProjects();
+  $('#saveName').value = currentProject ? projName + ' copy' : suggestName();
+  $('#saveBtn').textContent = currentProject ? 'Save a copy' : 'Save as new project';
+  $('#projDlg').showModal();
+}
+function renderProjects() {
+  const P = readProjects(), ids = Object.keys(P).sort((a, b) => P[b].updated - P[a].updated);
+  $('#curLine').textContent = currentProject ? `You’re working on “${projName}”. Every change saves automatically.` : (benchEmpty() ? 'The bench is empty. Build something, or open a saved project.' : 'This bench isn’t saved yet. Name it and save it to come back to it later.');
+  const list = $('#plist');
+  if (!ids.length) { list.innerHTML = '<p class="empty">No saved projects yet. Name the current bench above and save it, and it will appear here.</p>'; return; }
+  list.innerHTML = ids.map(id => {
+    const p = P[id], n = (p.data.comps || []).filter(c => c.type !== 'breadboard').length;
+    return `<div class="prow${id === currentProject ? ' cur' : ''}" data-id="${id}">${p.thumb ? `<img src="${p.thumb}" alt="">` : '<div class="noimg"></div>'}
+      <div class="pmeta"><b>${esc(p.name)}</b><span>${ago(p.updated)} · ${n} part${n === 1 ? '' : 's'}${id === currentProject ? ' · open now' : ''}</span></div>
+      <div class="pact"><button class="btn run" data-a="open">${id === currentProject ? 'Back to it' : 'Open'}</button><button class="btn" data-a="rename">Rename</button><button class="btn" data-a="dup">Duplicate</button><button class="btn danger" data-a="del">Delete</button></div></div>`;
+  }).join('');
+}
+$('#plist').addEventListener('click', e => {
+  const b = e.target.closest('button[data-a]'); if (!b) return;
+  const row = b.closest('.prow'), id = row.dataset.id, P = readProjects(), p = P[id]; if (!p) return;
+  const act = row.querySelector('.pact');
+  switch (b.dataset.a) {
+    case 'open': if (id === currentProject) $('#projDlg').close(); else guardBench(() => openProject(id), 'Opening this project'); break;
+    case 'rename': {
+      act.innerHTML = `<input value="${esc(p.name)}" maxlength="60" aria-label="New name"><button class="btn run" data-a="rename-ok">Save name</button><button class="btn" data-a="cancel">Cancel</button>`;
+      const inp = act.querySelector('input'); inp.focus(); inp.select();
+      inp.addEventListener('keydown', ev => { if (ev.key === 'Enter') { ev.preventDefault(); act.querySelector('[data-a=rename-ok]').click(); } if (ev.key === 'Escape') { ev.preventDefault(); ev.stopPropagation(); renderProjects(); } });
+      break;
+    }
+    case 'rename-ok': { const v = act.querySelector('input').value.trim(); if (v) { p.name = v; writeProjects(P); if (id === currentProject) { projName = v; updateChip(); } } renderProjects(); break; }
+    case 'cancel': renderProjects(); break;
+    case 'dup': { const nid = newId(); P[nid] = Object.assign({}, p, { name: p.name + ' copy', created: Date.now(), updated: Date.now() }); writeProjects(P); renderProjects(); toast(`Duplicated as “${p.name} copy”.`); break; }
+    case 'del': act.innerHTML = `<span class="q">Delete “${esc(p.name)}” for good?</span><button class="btn danger" data-a="del-ok">Delete</button><button class="btn" data-a="cancel">Keep it</button>`; break;
+    case 'del-ok': delete P[id]; writeProjects(P); if (id === currentProject) { currentProject = null; projName = ''; save(); } renderProjects(); toast(`Deleted “${p.name}”.`); break;
+  }
+});
+$('#saveBtn').onclick = () => { if (saveAsProject($('#saveName').value)) { renderProjects(); $('#saveName').value = projName + ' copy'; $('#saveBtn').textContent = 'Save a copy'; } };
+$('#saveName').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('#saveBtn').click(); } });
+$('#newBenchBtn').onclick = () => guardBench(() => { switchBench({ comps: [], wires: [] }, null, ''); $('#projDlg').open && $('#projDlg').close(); toast('Fresh bench. Drag a part in to start.'); }, 'Starting a new bench');
+$('#exportBtn').onclick = () => {
+  const name = currentProject ? projName : 'benchtop-circuit';
+  const blob = new Blob([JSON.stringify({ app: 'benchtop', version: 1, name, comps: state.comps, wires: state.wires })], { type: 'application/json' });
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = (name.replace(/[^\w-]+/g, '-').replace(/^-|-$/g, '').toLowerCase() || 'benchtop') + '.json';
+  document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 3000);
 };
+$('#importBtn').onclick = () => $('#importFile').click();
+$('#importFile').onchange = async e => {
+  const f = e.target.files[0]; e.target.value = ''; if (!f) return;
+  let d; try { d = JSON.parse(await f.text()); if (!Array.isArray(d.comps) || !Array.isArray(d.wires)) throw 0; } catch (err) { toast('That file isn’t a Benchtop project.'); return; }
+  guardBench(() => { switchBench({ comps: d.comps, wires: d.wires }, null, ''); saveAsProject(d.name || f.name.replace(/\.json$/i, '')); renderProjects(); }, 'Importing');
+};
+$('#guardSave').onclick = () => { if (saveAsProject($('#guardName').value)) { $('#guardDlg').close(); const t = guardThen; guardThen = null; t && t(); } };
+$('#guardName').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('#guardSave').click(); } });
+$('#guardDiscard').onclick = () => { $('#guardDlg').close(); const t = guardThen; guardThen = null; t && t(); };
+$('#guardCancel').onclick = () => { guardThen = null; $('#guardDlg').close(); };
+document.querySelectorAll('dialog [data-close]').forEach(b => b.onclick = () => b.closest('dialog').close());
+document.querySelectorAll('dialog').forEach(d => d.addEventListener('click', e => { if (e.target === d) d.close(); }));
+$('#projBtn').onclick = openProjects; $('#projChip').onclick = openProjects;
+window.addEventListener('keydown', e => {
+  if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); if (currentProject) { save(); toast(`Saved “${projName}”.`); } else openProjects(); }
+}, true);
+
+/* ---------- story mode ---------- */
+const HL = (name, bx = 0, by = 0) => { const m = /^([a-j])(\d+)$/.exec(name); return [bx + Number(m[2]) - 1, by + 3 + 'abcde fghij'.indexOf(m[1])]; };
+const A = n => HL(n, 24, 2);   // holes on the breadboard that sits beside the Arduino
+const PIN = { D2: [15, 0], D9: [8, 0], D13: [4, 0], GNDtop: [3, 0], V5: [6, 20], GND: [7, 20], GND2: [8, 20], A0: [11, 20] };
+const LH = {
+  net(x, y) { ensureNet(); const k = x + ',' + y; return net.parent.has(k) ? net.find(k) : null; },
+  conn(a, b) { const ra = LH.net(a[0], a[1]), rb = LH.net(b[0], b[1]); return ra !== null && ra === rb; },
+  gnd(a) { const r = LH.net(a[0], a[1]); return r !== null && net.groundRoot !== null && r === net.groundRoot; },
+  first(type, f) { return state.comps.find(c => c.type === type && (!f || f(c))); },
+  all(type) { return state.comps.filter(c => c.type === type); },
+  pin(c, i) { const p = pinsOf(c)[i]; return [p.x, p.y]; },
+  part(type, pts, o = {}) {
+    const tn = pts.map(p => LH.net(p[0], p[1])); if (tn.some(x => x === null)) return null;
+    for (const c of state.comps) {
+      if (c.type !== type || (o.props && !o.props(c))) continue;
+      const pn = pinsOf(c).map(p => LH.net(p.x, p.y));
+      if (tn.every((x, i) => pn[i] === x)) return c;
+      if (!o.polar && pts.length === 2 && pn[0] === tn[1] && pn[1] === tn[0]) return c;
+    }
+    return null;
+  },
+  lit(c) { return (c ? [c] : LH.all('led')).some(l => (S(l).I || 0) > 0.002 && !S(l).burned); },
+  ard() { return LH.first('arduino'); },
+  add(c) { pushUndo(); state.comps.push(c); changed(); return c; },
+  wire(a, b, col) { pushUndo(); state.wires.push(wr(a[0], a[1], b[0], b[1], col || wireColor)); changed(); },
+  code(src) { const a = LH.ard(); if (a) { a.props.code = src; codeBoard = a.id; refreshBoards(); changed(); } },
+  tab(name) { return $('#pane-' + name).classList.contains('on'); },
+  run() { if (!runToken) toggleRun(); },
+  rerun() { stopAll(); toggleRun(); },
+  set(c, k, v) { if (c) { c.props[k] = v; changed(); if (sel && sel.c === c) renderInspector(); } }
+};
+const bat = () => LH.first('battery'), pot = () => LH.first('pot'), andGate = () => LH.first('gate', c => c.props.kind === 'and' || c.props.kind === 'or');
+const ardOnly = () => ({ comps: [mk('arduino', 0, 0, { code: CODE_EMPTY }), mk('breadboard', 24, 2)], wires: [] });
+function ardWithLed(pin, color, extra = []) { const ch = ledChain(24, 2, 1, pin, color); return { comps: [mk('arduino', 0, 0, { code: CODE_EMPTY }), mk('breadboard', 24, 2), ...ch.comps], wires: [...ch.wires, wr(7, 20, 24, 18, BLK), ...extra] }; }
+const stepCode = (src, what) => ({ title: 'Open the sketch', text: `<p>The code is loaded into the board. Open the <b>Code</b> tab on the right to read it.</p>${what}`, hint: '.tabs [data-tab=code]', enter: () => LH.code(src), check: () => LH.tab('code'), show: () => showTab('code') });
+const stepRun = text => ({ title: 'Run it', text: `<p>Press <b>Run code</b> at the top.</p>${text || ''}`, hint: '#runBtn', check: () => !!runToken, show: LH.run });
+const ledBack = (a, k) => () => LH.part('led', [k, a], { polar: true }) ? 'The LED is in backwards, so no current can flow. Select it, press R twice to flip it, then drag it so the + leg is in the right hole.' : null;
+
+const LESSONS = [
+  { id: 'led', title: 'Light an LED', blurb: 'Your first complete circuit on a breadboard, and what happens without enough resistance.', parts: 'Battery, resistor, LED', minutes: 5,
+    setup: () => ({ comps: [mk('breadboard', 0, 0)], wires: [] }),
+    learned: 'A circuit needs an unbroken loop. Breadboard columns and rails join parts for you, an LED only conducts one way round, and the resistor sets the current: current = voltage ÷ resistance.',
+    challenge: 'Select the burned LED and replace it, put the resistor back to 330 Ω, then add a second LED with its own resistor in another pair of columns.',
+    steps: [
+      { title: 'Meet the breadboard', text: '<p>Under the plastic, each short column of five holes (a–e, and f–j) is one metal strip. The long red and blue rails run the full length and carry power.</p><p>Hover over a few holes: the green rings show everything that hole is joined to.</p>' },
+      { title: 'Add a battery', text: '<p>Drag a <b>Battery</b> from the parts list onto the bench. The outline marks a good spot.</p>', hint: 'battery', ghost: () => [mk('battery', -6, 8)], check: () => bat(), show: () => LH.add(mk('battery', -6, 8)) },
+      { title: 'Power the + rail', text: '<p>Drag from the battery’s red <b>+</b> lead to any hole on the top red <b>+</b> rail.</p>', guide: () => bat() ? [[...LH.pin(bat(), 0), 0, 0]] : [],
+        check: () => bat() && LH.conn(LH.pin(bat(), 0), [0, 0]), warn: () => bat() && LH.conn(LH.pin(bat(), 0), [0, 1]) ? 'That wire went to the blue − rail. Click it, press Delete, and use the red rail instead.' : null,
+        show: () => LH.wire(LH.pin(bat(), 0), [0, 0], RED) },
+      { title: 'Connect the − rail', text: '<p>Now drag from the black <b>−</b> lead to the blue <b>−</b> rail just below it.</p>', guide: () => bat() ? [[...LH.pin(bat(), 1), 0, 1]] : [],
+        check: () => bat() && LH.conn(LH.pin(bat(), 1), [0, 1]), warn: () => bat() && LH.conn(LH.pin(bat(), 1), [0, 0]) ? 'Both leads are on the same rail. That’s a short circuit, so delete that wire and use the blue rail.' : null,
+        show: () => LH.wire(LH.pin(bat(), 1), [0, 1], BLK) },
+      { title: 'Place a resistor', text: '<p>Drag a <b>Resistor</b> in so its legs sit in <b>a7</b> and <b>a11</b>. It limits the current so the LED survives.</p>', hint: 'resistor', ghost: () => [mk('resistor', ...HL('a7'), { r: 330 })],
+        check: () => LH.part('resistor', [HL('a7'), HL('a11')]), show: () => LH.add(mk('resistor', ...HL('a7'), { r: 330 })) },
+      { title: 'Feed it power', text: '<p>Run a wire from the red <b>+</b> rail down to column 7 (any free hole b–e). Every hole in that column is now powered, including the resistor’s leg.</p>', guide: () => [[6, 0, ...HL('c7')]],
+        check: () => LH.conn([0, 0], HL('a7')), show: () => LH.wire([6, 0], HL('c7'), RED) },
+      { title: 'Add the LED', text: '<p>Place an <b>LED</b> with its long, bent leg (+) in <b>d11</b> and its short leg (−) in <b>d12</b>. Current only flows from + to −.</p>', hint: 'led', ghost: () => [mk('led', ...HL('d11'))],
+        check: () => LH.part('led', [HL('d11'), HL('d12')], { polar: true }), warn: ledBack(HL('d11'), HL('d12')), show: () => LH.add(mk('led', ...HL('d11'))) },
+      { title: 'Close the loop', text: '<p>Wire column 12 (a free hole such as e12) to the blue <b>−</b> rail. Now the current has a way back to the battery.</p>', guide: () => [[...HL('e12'), 12, 1]],
+        check: () => LH.conn(HL('e12'), [0, 1]) && LH.lit(), warn: () => LH.conn(HL('e12'), [0, 1]) && !LH.lit() ? 'The loop is closed but the LED is dark. Check that it’s the right way round.' : null, show: () => LH.wire(HL('e12'), [12, 1], BLK) },
+      { title: 'It’s lit', text: '<p>Current flows + rail → resistor → LED → − rail. Click the LED to see its current in the Inspect panel.</p><p>Now select the resistor and change it to <b>1 kΩ</b>. Less current flows, so the LED dims.</p>',
+        check: () => LH.first('resistor', c => c.props.r >= 1000) && LH.lit(), show: () => LH.set(LH.first('resistor'), 'r', 1000) },
+      { title: 'Find the limit', text: '<p>Set the resistor to <b>10 Ω</b> and watch. With almost nothing limiting the current, the LED can’t take it.</p>',
+        check: () => LH.all('led').some(l => S(l).burned), show: () => LH.set(LH.first('resistor'), 'r', 10) }
+    ] },
+  { id: 'button', title: 'Add a push button', blurb: 'Control the LED by hand, then swap in a switch that stays on.', parts: 'Push button, slide switch', minutes: 3,
+    setup: () => ({ comps: [mk('breadboard', 0, 0), mk('battery', -6, 8), mk('resistor', ...HL('a7'), { r: 330 }), mk('led', ...HL('d11'), { color: 'green' })], wires: [wr(-6, 8, 0, 0, RED), wr(-4, 8, 0, 1, BLK), wr(...HL('e12'), 12, 1, BLK)] }),
+    learned: 'A switch is just a gap you can open and close. A push button closes it only while held; a slide switch stays where you leave it.',
+    challenge: 'Put the button back and add a second button beside it, so either one lights the LED. That’s an OR made from switches.',
+    steps: [
+      { title: 'One gap left', text: '<p>This LED circuit is complete except for one gap: nothing connects the + rail to the resistor in column 7. A push button will bridge that gap only while you hold it.</p>' },
+      { title: 'Place the button', text: '<p>Drag a <b>Push button</b> so its legs sit in <b>e5</b> and <b>e7</b>.</p>', hint: 'button', ghost: () => [mk('button', ...HL('e5'))],
+        check: () => LH.part('button', [HL('e5'), HL('e7')]), show: () => LH.add(mk('button', ...HL('e5'))) },
+      { title: 'Power the button', text: '<p>Run a wire from the red <b>+</b> rail to column 5 (try a5).</p>', guide: () => [[4, 0, ...HL('a5')]], check: () => LH.conn([0, 0], HL('a5')), show: () => LH.wire([4, 0], HL('a5'), RED) },
+      { title: 'Press it', text: '<p>Click and hold the button. The LED lights only while you hold it.</p>', check: () => LH.lit(),
+        show: () => { const b = LH.first('button'); if (b) { S(b).pressed = true; setTimeout(() => { S(b).pressed = false; }, 1500); } } },
+      { title: 'Make it stay on', text: '<p>Select the button, press <b>Delete</b>, and put a <b>Slide switch</b> in the same holes (e5 and e7). Click the switch to turn it on.</p>', hint: 'switch',
+        check: () => LH.part('switch', [HL('e5'), HL('e7')]) && LH.lit(),
+        show: () => { pushUndo(); state.comps = state.comps.filter(c => c.type !== 'button'); state.comps.push(mk('switch', ...HL('e5'), { on: true })); changed(); } }
+    ] },
+  { id: 'blink', title: 'Blink with an Arduino', blurb: 'Wire an LED to pin 13 and control it with code.', parts: 'Arduino Uno, resistor, LED', minutes: 6,
+    setup: ardOnly,
+    learned: 'pinMode sets a pin as an output, digitalWrite switches it between 5 V and 0 V, and delay pauses the program. Changing the code changes the hardware’s behaviour without rewiring anything.',
+    challenge: 'Make it blink SOS: three short flashes, three long, three short, then a pause.',
+    steps: [
+      { title: 'Plan', text: '<p>The Arduino switches its pins between 5 V and 0 V from code. You’ll wire an LED and resistor from pin 13 to ground, then make it blink.</p>' },
+      { title: 'Stand a resistor up', text: '<p>Drag a <b>Resistor</b> in, press <b>R</b> to stand it upright, and place it from <b>c2</b> down to <b>f2</b> so it crosses the centre gap.</p>', hint: 'resistor', ghost: () => [mk('resistor', ...A('c2'), {}, 1)],
+        check: () => LH.part('resistor', [A('c2'), A('f2')]), show: () => LH.add(mk('resistor', ...A('c2'), {}, 1)) },
+      { title: 'Add the LED', text: '<p>Place an <b>LED</b> with + in <b>i2</b> and − in <b>i3</b>. Its + leg now shares column 2 with the bottom of the resistor.</p>', hint: 'led', ghost: () => [mk('led', ...A('i2'))],
+        check: () => LH.part('led', [A('i2'), A('i3')], { polar: true }), warn: ledBack(A('i2'), A('i3')), show: () => LH.add(mk('led', ...A('i2'))) },
+      { title: 'LED to the − rail', text: '<p>Wire <b>j3</b> to the blue <b>−</b> rail along the bottom.</p>', guide: () => [[...A('j3'), 26, 18]], check: () => LH.conn(A('j3'), [24, 18]), show: () => LH.wire(A('j3'), [26, 18], BLK) },
+      { title: 'Ground the rail', text: '<p>Connect one of the Arduino’s <b>GND</b> pins (bottom edge, under POWER) to that same − rail. Now the rail is 0 V.</p>', guide: () => [[...PIN.GND, 24, 18]], check: () => LH.gnd([24, 18]), show: () => LH.wire(PIN.GND, [24, 18], BLK) },
+      { title: 'Pin 13 to the resistor', text: '<p>Wire pin <b>13</b> (top header, next to GND) to <b>a2</b>, the top of the resistor’s column.</p>', guide: () => [[...PIN.D13, ...A('a2')]], check: () => LH.conn(PIN.D13, A('a2')), show: () => LH.wire(PIN.D13, A('a2'), ORG) },
+      stepCode(CODE.blink, '<p><code>setup()</code> runs once and makes pin 13 an output. <code>loop()</code> runs forever: on, wait 500 ms, off, wait 500 ms.</p>'),
+      stepRun('<p>The LED (and the little L light on the board) should start blinking.</p>'),
+      { title: 'Speed it up', text: '<p>In the code, change both <code>delay(500)</code> lines to <code>delay(100)</code>. Then press <b>Stop</b> and <b>Run code</b> again to load the new version.</p>',
+        enter: m => { const a = LH.ard(); m.rt0 = a && S(a).rt; },
+        check: m => { const a = LH.ard(); return a && /delay\(\s*100\s*\)/.test(a.props.code) && S(a).rt && S(a).rt !== m.rt0; },
+        show: () => { const a = LH.ard(); a.props.code = a.props.code.replace(/delay\(\s*500\s*\)/g, 'delay(100)'); refreshBoards(); LH.rerun(); } }
+    ] },
+  { id: 'ardbutton', title: 'Read a button', blurb: 'Use an input pin and a pull-up so a button controls the LED through code.', parts: 'Arduino Uno, push button', minutes: 5,
+    setup: () => ardWithLed([PIN.D13[0], PIN.D13[1]], 'red'),
+    learned: 'Inputs read a voltage. INPUT_PULLUP holds the pin at 5 V (HIGH) through an internal resistor, and pressing the button pulls it to 0 V (LOW). That’s why pressed reads LOW.',
+    challenge: 'Change the code so each press toggles the LED on or off instead of only lighting it while held.',
+    steps: [
+      { title: 'Inputs', text: '<p>The LED on pin 13 is already wired. Now the Arduino will <i>read</i> a pin. With INPUT_PULLUP, pin 2 sits at HIGH until a button connects it to ground.</p>' },
+      { title: 'Place the button', text: '<p>Drag a <b>Push button</b> so its legs sit in <b>e15</b> and <b>e17</b>.</p>', hint: 'button', ghost: () => [mk('button', ...A('e15'))],
+        check: () => LH.part('button', [A('e15'), A('e17')]), show: () => LH.add(mk('button', ...A('e15'))) },
+      { title: 'Pin 2 to the button', text: '<p>Wire pin <b>2</b> on the top header to <b>a15</b>.</p>', guide: () => [[...PIN.D2, ...A('a15')]], check: () => LH.conn(PIN.D2, A('a15')), show: () => LH.wire(PIN.D2, A('a15'), BLU) },
+      { title: 'Other side to ground', text: '<p>Wire <b>a17</b> to the blue <b>−</b> rail at the bottom. That rail is already connected to GND.</p>', guide: () => [[...A('a17'), 40, 18]], check: () => LH.gnd(A('a17')), show: () => LH.wire(A('a17'), [40, 18], BLK) },
+      stepCode(CODE.button, '<p><code>pinMode(BUTTON, INPUT_PULLUP)</code> turns on the pull-up. <code>digitalRead</code> returns LOW while the button is held.</p>'),
+      stepRun(),
+      { title: 'Press it', text: '<p>Hold the button. The LED lights, and the Serial monitor logs each press and release.</p>', check: () => !!runToken && LH.lit(),
+        show: () => { const b = LH.first('button'); if (b) { S(b).pressed = true; setTimeout(() => { S(b).pressed = false; }, 1500); } } }
+    ] },
+  { id: 'dimmer', title: 'Dim with a knob', blurb: 'Read a potentiometer with analogRead and fade an LED with PWM.', parts: 'Arduino Uno, potentiometer', minutes: 5,
+    setup: () => ardWithLed([PIN.D9[0], PIN.D9[1]], 'blue'),
+    learned: 'analogRead turns 0–5 V into a number from 0 to 1023. analogWrite on a ~ pin switches on and off very fast (PWM), so the LED looks dimmer or brighter. map() converts one range into the other.',
+    challenge: 'Reverse it so turning the knob up makes the LED dimmer. Hint: swap the last two numbers in map().',
+    steps: [
+      { title: 'Analog in, PWM out', text: '<p>The LED is wired to pin 9, one of the ~ pins that can fade. A potentiometer will give the Arduino a voltage anywhere from 0 to 5 V.</p>' },
+      { title: 'Place the knob', text: '<p>Drag a <b>Potentiometer</b> onto the bench below the Arduino.</p>', hint: 'pot', ghost: () => [mk('pot', 10, 25)], check: () => pot(), show: () => LH.add(mk('pot', 10, 25)) },
+      { title: 'Left pin to 5 V', text: '<p>Wire the Arduino’s <b>5V</b> pin to the knob’s left pin.</p>', guide: () => pot() ? [[...PIN.V5, ...LH.pin(pot(), 0)]] : [], check: () => pot() && LH.conn(PIN.V5, LH.pin(pot(), 0)), show: () => LH.wire(PIN.V5, LH.pin(pot(), 0), RED) },
+      { title: 'Right pin to ground', text: '<p>Wire a <b>GND</b> pin to the knob’s right pin.</p>', guide: () => pot() ? [[...PIN.GND2, ...LH.pin(pot(), 2)]] : [], check: () => pot() && LH.gnd(LH.pin(pot(), 2)), show: () => LH.wire(PIN.GND2, LH.pin(pot(), 2), BLK) },
+      { title: 'Middle pin to A0', text: '<p>Wire the middle pin (the wiper) to <b>A0</b>.</p>', guide: () => pot() ? [[...PIN.A0, ...LH.pin(pot(), 1)]] : [], check: () => pot() && LH.conn(PIN.A0, LH.pin(pot(), 1)), show: () => LH.wire(PIN.A0, LH.pin(pot(), 1), YEL) },
+      stepCode(CODE.dimmer, '<p><code>analogRead(A0)</code> gives 0–1023, <code>map()</code> scales that to 0–255, and <code>analogWrite(9, level)</code> sets the brightness.</p>'),
+      stepRun(),
+      { title: 'Turn the knob', text: '<p>Scroll over the knob, or select it and drag the slider in Inspect. Watch the LED and the numbers in the Serial monitor.</p>',
+        enter: m => { m.p0 = pot() ? pot().props.pos : 0.5; }, check: m => !!runToken && pot() && Math.abs(pot().props.pos - m.p0) > 0.25, show: () => LH.set(pot(), 'pos', 0.95) }
+    ] },
+  { id: 'night', title: 'Night light sensor', blurb: 'A light sensor and a voltage divider switch an LED on when it gets dark.', parts: 'Arduino Uno, light sensor, 10 kΩ resistor', minutes: 7,
+    setup: () => ardWithLed([PIN.D13[0], PIN.D13[1]], 'yellow'),
+    learned: 'A sensor that changes resistance needs a partner resistor to become a voltage: a voltage divider. The Arduino reads that voltage on A0 and decides what to do with an if-style comparison.',
+    challenge: 'Make the LED fade in gradually as it gets darker, using analogWrite on a ~ pin instead of an on/off threshold.',
+    steps: [
+      { title: 'How it works', text: '<p>A photoresistor’s resistance drops as light rises. Paired with a fixed 10 kΩ resistor it forms a <b>voltage divider</b>: the voltage between the two rises with the light, and A0 can measure it.</p>' },
+      { title: 'Power the + rail', text: '<p>Wire the Arduino’s <b>5V</b> pin to the bottom red <b>+</b> rail. The − rail below it is already grounded.</p>', guide: () => [[...PIN.V5, 24, 17]], check: () => LH.conn(PIN.V5, [24, 17]), show: () => LH.wire(PIN.V5, [24, 17], RED) },
+      { title: 'Place the light sensor', text: '<p>Drag a <b>Light sensor</b> so its legs sit in <b>h15</b> and <b>h17</b>.</p>', hint: 'ldr', ghost: () => [mk('ldr', ...A('h15'))], check: () => LH.part('ldr', [A('h15'), A('h17')]), show: () => LH.add(mk('ldr', ...A('h15'))) },
+      { title: 'Sensor to 5 V', text: '<p>Wire <b>i15</b> to the red <b>+</b> rail.</p>', guide: () => [[...A('i15'), 38, 17]], check: () => LH.conn(A('h15'), [24, 17]), show: () => LH.wire(A('i15'), [38, 17], RED) },
+      { title: 'Add the 10 kΩ resistor', text: '<p>Place a <b>Resistor</b> from <b>j17</b> to <b>j21</b>, then select it and set it to <b>10 kΩ</b>.</p>', hint: 'resistor', ghost: () => [mk('resistor', ...A('j17'), { r: 10000 })],
+        check: () => LH.part('resistor', [A('j17'), A('j21')], { props: c => c.props.r >= 4700 && c.props.r <= 22000 }),
+        warn: () => LH.part('resistor', [A('j17'), A('j21')]) ? 'Right spot. Now select it and set the value to 10 kΩ in Inspect.' : null,
+        show: () => { const r = LH.part('resistor', [A('j17'), A('j21')]); if (r) LH.set(r, 'r', 10000); else LH.add(mk('resistor', ...A('j17'), { r: 10000 })); } },
+      { title: 'Resistor to ground', text: '<p>Wire <b>i21</b> to the blue <b>−</b> rail.</p>', guide: () => [[...A('i21'), 44, 18]], check: () => LH.gnd(A('j21')), show: () => LH.wire(A('i21'), [44, 18], BLK) },
+      { title: 'Measure the middle', text: '<p>Column 17 is where the sensor meets the resistor. Wire <b>A0</b> to <b>f17</b>.</p>', guide: () => [[...PIN.A0, ...A('f17')]], check: () => LH.conn(PIN.A0, A('h17')), show: () => LH.wire(PIN.A0, A('f17'), YEL) },
+      stepCode(CODE.night, '<p>It reads A0 every 200 ms and turns the LED on when the reading falls below <code>DARK</code>.</p>'),
+      stepRun('<p>Open the Serial monitor to see the light readings.</p>'),
+      { title: 'Turn out the lights', text: '<p>Scroll down over the light sensor (or drag Light level in Inspect) until it’s dark. Once the reading drops below 300, the LED switches on.</p>',
+        check: () => !!runToken && LH.lit(), show: () => LH.set(LH.first('ldr'), 'light', 0.1) }
+    ] },
+  { id: 'thermo', title: 'Thermometer', blurb: 'Read a TMP36 temperature sensor and print °C to the Serial monitor.', parts: 'Arduino Uno, TMP36', minutes: 6,
+    setup: () => ({ comps: [mk('arduino', 0, 0, { code: CODE_EMPTY }), mk('breadboard', 24, 2)], wires: [wr(7, 20, 24, 18, BLK)] }),
+    learned: 'Many sensors output a voltage that stands for a measurement. Convert the reading to volts (× 5 ÷ 1023), then apply the sensor’s formula from its datasheet.',
+    challenge: 'Add an LED on pin 13 that turns on when it’s warmer than 30 °C.',
+    steps: [
+      { title: 'A sensor that speaks volts', text: '<p>The TMP36 outputs 0.5 V at 0 °C plus 10 mV for every degree. Read that on A0 and a little math turns it into °C.</p>' },
+      { title: 'Power the + rail', text: '<p>Wire the Arduino’s <b>5V</b> pin to the bottom red <b>+</b> rail.</p>', guide: () => [[...PIN.V5, 24, 17]], check: () => LH.conn(PIN.V5, [24, 17]), show: () => LH.wire(PIN.V5, [24, 17], RED) },
+      { title: 'Place the sensor', text: '<p>Drag a <b>Temp sensor</b> so its three legs sit in <b>h15</b>, <b>h16</b> and <b>h17</b>. From the left they are +Vs, Vout and GND.</p>', hint: 'tmp36', ghost: () => [mk('tmp36', ...A('h15'))],
+        check: () => LH.part('tmp36', [A('h15'), A('h16'), A('h17')], { polar: true }), show: () => LH.add(mk('tmp36', ...A('h15'))) },
+      { title: 'Power the sensor', text: '<p>Wire <b>i15</b> to the red <b>+</b> rail.</p>', guide: () => [[...A('i15'), 38, 17]], check: () => LH.conn(A('h15'), [24, 17]), show: () => LH.wire(A('i15'), [38, 17], RED) },
+      { title: 'Ground the sensor', text: '<p>Wire <b>i17</b> to the blue <b>−</b> rail.</p>', guide: () => [[...A('i17'), 40, 18]], check: () => LH.gnd(A('h17')), show: () => LH.wire(A('i17'), [40, 18], BLK) },
+      { title: 'Output to A0', text: '<p>Wire <b>A0</b> to <b>f16</b>, the sensor’s middle column.</p>', guide: () => [[...PIN.A0, ...A('f16')]], check: () => LH.conn(PIN.A0, A('h16')), show: () => LH.wire(PIN.A0, A('f16'), YEL) },
+      stepCode(CODE.thermo, '<p>It converts the reading to volts, then to °C, and prints it twice a second.</p>'),
+      stepRun(),
+      { title: 'Watch the readings', text: '<p>Open the <b>Serial monitor</b> tab.</p>', hint: '.tabs [data-tab=serial]', check: () => LH.tab('serial'), show: () => showTab('serial') },
+      { title: 'Warm it up', text: '<p>Scroll over the sensor (or use the slider in Inspect) to change the temperature by at least 5 °C. The readings follow.</p>',
+        enter: m => { const t = LH.first('tmp36'); m.t0 = t ? t.props.temp : 22; }, check: m => { const t = LH.first('tmp36'); return !!runToken && t && Math.abs(t.props.temp - m.t0) >= 5; }, show: () => LH.set(LH.first('tmp36'), 'temp', 35) }
+    ] },
+  { id: 'logic', title: 'Logic gates', blurb: 'Build an AND gate circuit and work out its truth table.', parts: 'Logic inputs, AND gate, probe', minutes: 4,
+    setup: () => ({ comps: [], wires: [] }),
+    learned: 'Digital circuits only care about 1 (high) and 0 (low). An AND gate outputs 1 only when every input is 1; an OR gate when any input is 1. Every computer is built from gates like these.',
+    challenge: 'Load the half adder from the example circuits and work out why XOR plus AND adds two bits.',
+    steps: [
+      { title: 'Ones and zeros', text: '<p>Logic gates compare 1s and 0s. An <b>AND</b> gate outputs 1 only when input A <i>and</i> input B are both 1.</p>' },
+      { title: 'Two inputs', text: '<p>Drag two <b>Logic input</b> switches onto the bench, one above the other.</p>', hint: 'toggle', ghost: () => [mk('toggle', 4, 4), mk('toggle', 4, 8)], check: () => LH.all('toggle').length >= 2,
+        show: () => { pushUndo(); while (LH.all('toggle').length < 2) state.comps.push(mk('toggle', 4, LH.all('toggle').length ? 8 : 4)); changed(); } },
+      { title: 'The gate', text: '<p>Drag an <b>AND</b> gate to the right of them.</p>', hint: 'gate:and', ghost: () => [mk('gate', 8, 3, { kind: 'and' })], check: () => andGate(), show: () => LH.add(mk('gate', 8, 3, { kind: 'and' })) },
+      { title: 'Wire input A', text: '<p>Wire the top switch’s output to the gate’s top input.</p>',
+        guide: () => { const g = andGate(), t = LH.all('toggle').sort((a, b) => a.y - b.y)[0]; return g && t ? [[...LH.pin(t, 0), ...LH.pin(g, 0)]] : []; },
+        check: () => { const g = andGate(); return g && LH.all('toggle').some(t => LH.conn(LH.pin(t, 0), LH.pin(g, 0))); },
+        show: () => { const g = andGate(), t = LH.all('toggle').sort((a, b) => a.y - b.y)[0]; LH.wire(LH.pin(t, 0), LH.pin(g, 0), BLU); } },
+      { title: 'Wire input B', text: '<p>Wire the bottom switch to the gate’s bottom input.</p>',
+        guide: () => { const g = andGate(), t = LH.all('toggle').sort((a, b) => a.y - b.y)[1]; return g && t ? [[...LH.pin(t, 0), ...LH.pin(g, 1)]] : []; },
+        check: () => { const g = andGate(); if (!g) return false; const ts = LH.all('toggle'), a = ts.find(t => LH.conn(LH.pin(t, 0), LH.pin(g, 0))); return ts.some(t => t !== a && LH.conn(LH.pin(t, 0), LH.pin(g, 1))); },
+        show: () => { const g = andGate(), t = LH.all('toggle').sort((a, b) => a.y - b.y)[1]; LH.wire(LH.pin(t, 0), LH.pin(g, 1), YEL); } },
+      { title: 'Read the output', text: '<p>Place a <b>Logic probe</b> and wire it to the gate’s output on the right.</p>', hint: 'probe',
+        ghost: () => { const g = andGate(); const y = g ? LH.pin(g, 2) : [12, 4]; return [mk('probe', y[0] + 2, y[1])]; },
+        guide: () => { const g = andGate(), p = LH.first('probe'); return g && p ? [[...LH.pin(g, 2), ...LH.pin(p, 0)]] : []; },
+        check: () => { const g = andGate(); return g && LH.all('probe').some(p => LH.conn(LH.pin(p, 0), LH.pin(g, 2))); },
+        show: () => { const g = andGate(), y = LH.pin(g, 2); let p = LH.first('probe'); if (!p) p = LH.add(mk('probe', y[0] + 2, y[1])); LH.wire(y, LH.pin(p, 0), GRN); } },
+      { title: 'Find the 1', text: '<p>Click the switches to try different combinations. Which one turns the probe green?</p>', check: () => { const g = andGate(); return g && S(g).out === 1; },
+        show: () => { LH.all('toggle').forEach(t => t.props.on = true); changed(); } },
+      { title: 'Back to 0', text: '<p>Both on gives 1. Now turn either switch off: the output drops straight back to 0.</p>', check: () => { const g = andGate(); return g && S(g).out === 0; },
+        show: () => { const t = LH.all('toggle')[0]; if (t) { t.props.on = false; changed(); } } },
+      { title: 'Try OR', text: '<p>Select the gate and change its type to <b>OR</b> in Inspect. Now one switch on is enough to make a 1.</p>',
+        check: () => LH.first('gate', c => c.props.kind === 'or'), show: () => LH.set(andGate(), 'kind', 'or') }
+    ] }
+];
+
+let lesson = null;
+function doneLessons() { try { return JSON.parse(localStorage.getItem(LESSON_KEY)) || {}; } catch (e) { return {}; } }
+function buildLearn() {
+  const done = doneLessons();
+  $('#lgrid').innerHTML = LESSONS.map((L, i) => `<button class="lcard" data-l="${L.id}"><span class="n">${i + 1}</span><b>${L.title}</b><span>${L.blurb}</span><span class="meta">${L.parts} · about ${L.minutes} min</span>${done[L.id] ? '<span class="done">Completed ✓</span>' : ''}</button>`).join('');
+  $('#exlist').innerHTML = Object.entries(EXAMPLES).map(([k, e]) => `<button class="btn" data-ex="${k}">${e.name}</button>`).join('');
+}
+$('#lgrid').addEventListener('click', e => { const b = e.target.closest('[data-l]'); if (b) startLesson(b.dataset.l); });
+$('#exlist').addEventListener('click', e => {
+  const b = e.target.closest('[data-ex]'); if (!b) return; const k = b.dataset.ex;
+  guardBench(() => { switchBench(EXAMPLES[k].build(), null, ''); $('#learnDlg').close(); toast(boards().length ? 'Press Run code to start the sketch.' : 'This circuit is live. Try clicking the switches.'); }, 'Loading an example');
+});
+$('#learnBtn').onclick = () => { $('#learnBtn').classList.remove('hint-pulse'); try { localStorage.setItem('benchtop:seen', '1'); } catch (e) {} buildLearn(); $('#learnDlg').showModal(); };
+function startLesson(id) {
+  const L = LESSONS.find(l => l.id === id); if (!L) return;
+  guardBench(() => {
+    switchBench(L.setup(), null, '');
+    lesson = { L, i: 0, mem: {}, ghosts: null, done: false };
+    $('#learnDlg').open && $('#learnDlg').close(); select(null); showTab('inspect');
+    enterStep(); fitView(); updateChip();
+  }, 'Starting a lesson');
+}
+function setHint(h) {
+  document.querySelectorAll('.hint-pulse').forEach(el => { if (el.id !== 'learnBtn') el.classList.remove('hint-pulse'); });
+  if (!h) return;
+  const el = /^[#.]/.test(h) ? document.querySelector(h) : document.querySelector(`.pitem[data-spec="${h}"]`);
+  if (el) { el.classList.add('hint-pulse'); if (el.classList.contains('pitem')) el.scrollIntoView({ block: 'nearest', inline: 'nearest' }); }
+}
+function enterStep() {
+  const st = lesson.L.steps[lesson.i];
+  lesson.mem = { t0: performance.now() };
+  try { if (st.enter) st.enter(lesson.mem); } catch (e) {}
+  try { lesson.ghosts = st.ghost ? st.ghost(lesson.mem) : null; } catch (e) { lesson.ghosts = null; }
+  lesson.warn = null; setHint(st.hint); renderStory();
+}
+function advance() {
+  if (lesson.i < lesson.L.steps.length - 1) { lesson.i++; enterStep(); }
+  else {
+    lesson.done = true; lesson.ghosts = null; setHint(null);
+    const d = doneLessons(); d[lesson.L.id] = true; try { localStorage.setItem(LESSON_KEY, JSON.stringify(d)); } catch (e) {}
+    renderStory();
+  }
+  const card = $('#story'); card.classList.remove('ok'); void card.offsetWidth; card.classList.add('ok');
+}
+function lessonTick() {
+  const st = lesson.L.steps[lesson.i];
+  let w = null; try { w = st.warn ? st.warn(lesson.mem) : null; } catch (e) {}
+  if (w !== lesson.warn) { lesson.warn = w; const el = $('#storyWarn'); el.hidden = !w; el.textContent = w || ''; }
+  if (st.check && performance.now() - lesson.mem.t0 > 400) { let ok = false; try { ok = !!st.check(lesson.mem); } catch (e) {} if (ok) advance(); }
+}
+function exitLesson() { if (!lesson) return; lesson = null; setHint(null); renderStory(); updateChip(); }
+function renderStory() {
+  const el = $('#story');
+  if (!lesson) { el.hidden = true; $('#status').hidden = false; return; }
+  el.hidden = false; $('#status').hidden = true;
+  const L = lesson.L, n = L.steps.length, idx = LESSONS.indexOf(L);
+  $('#storyKicker').textContent = `Lesson ${idx + 1}: ${L.title}`;
+  const back = $('#storyBack'), show = $('#storyShow'), next = $('#storyNext');
+  if (lesson.done) {
+    $('#storyStep').textContent = ''; $('#storyBar').style.width = '100%';
+    $('#storyTitle').textContent = 'Lesson complete';
+    $('#storyText').innerHTML = `<p>${L.learned}</p><p><b>Try this next:</b> ${L.challenge}</p>`;
+    $('#storyWarn').hidden = true; $('#storyWait').hidden = true;
+    back.hidden = false; back.textContent = 'All lessons';
+    show.hidden = false; show.textContent = 'Save as project';
+    next.hidden = !LESSONS[idx + 1]; next.textContent = 'Next lesson';
+    return;
+  }
+  const st = L.steps[lesson.i];
+  $('#storyStep').textContent = `· Step ${lesson.i + 1} of ${n}`;
+  $('#storyBar').style.width = (lesson.i / n * 100) + '%';
+  $('#storyTitle').textContent = st.title; $('#storyText').innerHTML = st.text;
+  $('#storyWarn').hidden = true;
+  back.hidden = false; back.textContent = 'Back'; back.disabled = lesson.i === 0;
+  show.hidden = !st.show; show.textContent = 'Show me';
+  next.hidden = !!st.check; next.textContent = lesson.i === n - 1 ? 'Finish' : 'Next';
+  $('#storyWait').hidden = !st.check;
+}
+$('#storyNext').onclick = () => { if (!lesson) return; if (lesson.done) { const nx = LESSONS[LESSONS.indexOf(lesson.L) + 1]; if (nx) startLesson(nx.id); } else advance(); };
+$('#storyBack').onclick = () => { if (!lesson) return; if (lesson.done) { buildLearn(); $('#learnDlg').showModal(); return; } if (lesson.i > 0) { lesson.i--; enterStep(); } };
+$('#storyShow').onclick = () => { if (!lesson) return; if (lesson.done) { openProjects(); return; } const st = lesson.L.steps[lesson.i]; try { st.show && st.show(lesson.mem); } catch (e) { console.error(e); } };
+$('#storyExit').onclick = exitLesson;
 
 /* ---------- main loop ---------- */
 let lastLive = 0;
+let lastCheck = 0;
 function frame(t) {
+  requestAnimationFrame(frame);   // schedule first so one bad frame can never freeze the bench
   NOW = performance.now() / 1000;
   try { simFrame(); } catch (err) { console.error(err); }
-  render();
-  if (t - lastLive > 120) { updateLive(); lastLive = t; }
-  if ($('#pane-serial').classList.contains('on')) renderSerial();
-  requestAnimationFrame(frame);
+  try { render(); } catch (err) { console.error(err); }
+  try {
+    if (t - lastLive > 120) { updateLive(); lastLive = t; }
+    if ($('#pane-serial').classList.contains('on')) renderSerial();
+    if (lesson && !lesson.done && t - lastCheck > 250) { lastCheck = t; lessonTick(); }
+  } catch (err) { console.error(err); }
 }
 
 /* ---------- boot ---------- */
@@ -1412,9 +2065,13 @@ matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => { re
 new MutationObserver(() => { readTheme(); drawIcons(); }).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 buildPalette(); buildWirebar();
 let restored = false;
-try { const raw = localStorage.getItem('benchtop:v1'); if (raw) { const d = JSON.parse(raw); if (d && d.comps && d.comps.length) { loadDesign(d); restored = true; } } } catch (e) {}
+try {
+  const raw = localStorage.getItem(WORK_KEY);
+  if (raw) { const d = JSON.parse(raw); const P = readProjects(); if (d && d.projectId && P[d.projectId]) { currentProject = d.projectId; projName = P[d.projectId].name; } if (d && d.comps && (d.comps.length || currentProject)) { loadDesign(d); restored = true; } }
+} catch (e) {}
 if (!restored) loadDesign(EXAMPLES.blink.build());
-renderInspector(); refreshBoards();
+renderInspector(); refreshBoards(); buildLearn(); updateChip();
+try { if (!localStorage.getItem('benchtop:seen')) { $('#learnBtn').classList.add('hint-pulse'); toast('New here? Story mode walks you through your first circuits.', 4200); } } catch (e) {}
 requestAnimationFrame(() => { fitView(); requestAnimationFrame(frame); });
 new ResizeObserver(() => {}).observe($('#stage'));
 </script>
