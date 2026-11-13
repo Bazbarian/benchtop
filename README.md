@@ -1,8 +1,8 @@
-# Benchtop
+﻿# Benchtop
 
 A browser electronics lab: build circuits on a breadboard, wire up an Arduino Uno, and watch them run live.
 
-**Live site:** https://YOUR-USERNAME.github.io/benchtop/
+**Live site:** https://bazbarian.github.io/benchtop/
 
 ## What it does
 
